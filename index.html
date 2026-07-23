@@ -1,172 +1,549 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>Shangtao Li</title>
-
-    <meta name="author" content="Shangtao Li">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/ri.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+    <meta name="description" content="Shangtao Li is a graduate student at Carnegie Mellon University working on robot learning, safety, and control.">
+    <meta name="author" content="Shangtao Li">
+    <title>Shangtao Li</title>
+    <link rel="icon" href="images/ri.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Serif+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --background: #fff;
+        --surface: #fff;
+        --text: #1c1b1a;
+        --soft: #4a4744;
+        --muted: #716c66;
+        --line: #e5e0d9;
+        --accent: #1f4e79;
+        --accent-hover: #163a5f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 60px;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family: "Lora", Georgia, serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: var(--accent-hover);
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Source Serif Pro", Georgia, serif;
+        line-height: 1.2;
+      }
+
+      .page {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 64px 24px;
+      }
+
+      .page-head {
+        margin-bottom: 48px;
+      }
+
+      .site-bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: #111;
+        color: var(--surface);
+      }
+
+      .site-bar-inner {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "Lora", Georgia, serif;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .site-bar a {
+        color: inherit;
+      }
+
+      .site-bar-inner > a:first-child {
+        font-size: 1.18rem;
+      }
+
+      h1 {
+        margin-bottom: 4px;
+        font-size: 2.7rem;
+        letter-spacing: -0.02em;
+      }
+
+      .tagline {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 96px;
+        transform: translateX(24px);
+      }
+
+      .hero-copy {
+        min-width: 0;
+        flex: 0 1 430px;
+      }
+
+      .contact {
+        margin: 10px 0 0;
+        font-size: 0.9rem;
+      }
+
+      .about-copy p {
+        margin-bottom: 1em;
+        color: var(--soft);
+        text-wrap: pretty;
+      }
+
+      .about-copy p:last-child {
+        margin-bottom: 0;
+      }
+
+      .portrait {
+        width: 200px;
+        height: auto;
+        flex: 0 0 200px;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 8px 28px rgba(28, 27, 26, 0.1);
+      }
+
+      .profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 15px;
+        font-size: 0.86rem;
+      }
+
+      .profile-links a {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .profile-links a:hover,
+      .profile-links a:focus-visible {
+        color: var(--accent-hover);
+      }
+
+      .profile-links span {
+        color: var(--muted);
+      }
+
+      section:not(.hero) {
+        padding-top: 40px;
+      }
+
+      .section-title {
+        margin-bottom: 14px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid var(--line);
+        font-size: 1.55rem;
+      }
+
+      .publication {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        gap: 22px;
+        align-items: center;
+        padding: 8px 0 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .publication video {
+        display: block;
+        width: 200px;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 8px;
+        background: #e4dfd8;
+      }
+
+      .publication h3 {
+        margin-bottom: 8px;
+        font-size: 1.06rem;
+        overflow-wrap: anywhere;
+      }
+
+      .publication h3 a {
+        color: var(--text);
+      }
+
+      .publication h3 a:hover,
+      .publication h3 a:focus-visible {
+        color: var(--accent);
+      }
+
+      .eyebrow {
+        margin-bottom: 5px;
+        color: var(--accent);
+        font-family: "Lora", Georgia, serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .authors {
+        margin-bottom: 8px;
+        color: var(--soft);
+        font-family: "Lora", Georgia, serif;
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .authors a {
+        color: inherit;
+      }
+
+      .authors a:hover,
+      .authors a:focus-visible {
+        color: var(--accent);
+      }
+
+      .paper-links {
+        display: flex;
+        gap: 13px;
+        margin: 0;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .education-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .education-item {
+        display: grid;
+        grid-template-columns: 50px minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        gap: 4px 10px;
+        align-items: start;
+        padding-top: 12px;
+      }
+
+      .education-item img {
+        width: 50px;
+        height: 50px;
+        grid-row: 1 / span 2;
+        object-fit: contain;
+        border-radius: 7px;
+      }
+
+      .education-item img[src$=".jpg"] {
+        border-radius: 50%;
+        mix-blend-mode: multiply;
+      }
+
+      .education-item img[src="images/cmu_logo.jpg"] {
+        transform: scale(1.05);
+      }
+
+      .education-item img[src="images/ucb_logo.svg"] {
+        transform: scale(1.03);
+      }
+
+      .education-item h3 {
+        margin-bottom: 2px;
+        font-size: 0.88rem;
+        white-space: nowrap;
+      }
+
+      .education-item p,
+      .education-item time {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .education-item time {
+        grid-column: 2;
+        align-self: end;
+        white-space: nowrap;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 46px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 15px;
+        }
+
+        .page {
+          padding: 44px 20px;
+        }
+
+        .page-head {
+          margin-bottom: 20px;
+        }
+
+        .site-bar-inner {
+          padding-inline: 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero {
+          flex-direction: column;
+          align-items: center;
+          gap: 32px;
+          transform: none;
+        }
+
+        .hero-copy {
+          flex-basis: auto;
+          text-align: center;
+        }
+
+        .profile-links {
+          justify-content: center;
+        }
+
+        .portrait {
+          width: 170px;
+          flex-basis: auto;
+        }
+
+        .publication {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .publication video {
+          width: 100%;
+        }
+
+        .education-list {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .education-item {
+          grid-template-columns: 44px minmax(0, 1fr);
+          padding: 14px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .education-item img {
+          width: 44px;
+          height: 44px;
+        }
+
+        footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Shangtao Li
-                </p>
-                <p>
-		<p>I am a second-year M.S. student in <a href="https://www.meche.engineering.cmu.edu/">Mechanical Engineering</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by Prof. <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>. 
-    Previously, I was a Visiting Student at <a href="https://me.berkeley.edu/">UC Berkeley</a>, where I worked with Prof. <a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a>. 
-    
-    <p>I received my B.E. in Mechanical Engineering from <a href="https://en.xjtu.edu.cn/">Xi'an Jiaotong University</a>, where I was advised by Prof. <a href="https://gr.xjtu.edu.cn/web/zeqiji/homepage">Qiji Ze</a>.
-                </p>
-                <p style="text-align:center">
-                  <a href="mailto:shangtal@andrew.cmu.edu">Email</a> &nbsp;/&nbsp;
-                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp;/&nbsp; -->
-                  <a href="https://scholar.google.com/citations?user=oX06uKIAAAAJ&hl=en">Scholar</a> &nbsp;/&nbsp;
-                  <a href="https://x.com/ShangtaoLi">Twitter</a> &nbsp;/&nbsp;
-                  <a href="https://github.com/ShangtaoLi/">Github</a>
-                </p>
-              </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
-                <a href="images/shangtaoli.jpg"><img style="width:80%;max-width:80%;object-fit: cover; border-radius: 8px;" alt="profile photo" src="images/shangtaoli.jpg" class="hoverZoomLink"></a>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-                <p>
-                My research focuses on building robot learning systems that can adapt and improve beyond their initial training experience. I am particularly interested in how robots can predict the long-term consequences of their behavior and use these predictions to evaluate, steer, and efficiently improve pretrained policies for complex real-world tasks.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px 4px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:16px;width:20%;vertical-align:middle">
-                <video width="200" autoplay loop muted playsinline>
-                  <source src="project/lambda_reach.MOV" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/html/2606.16022v1">
-                  <span class="papertitle">λ-Reachability: Geometric-Horizon Safety Bellman Equations for Humanoid Safety</span>
-                </a>
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                Rui Chen, <strong>Shangtao Li</strong>, Yifan Sun, Changliu Liu.
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                <em> arXiv preprint 2026</em>
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                <!-- <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">webpage</a> | -->
-                <a href="https://arxiv.org/pdf/2606.16022v1">pdf</a> |
-                <a href="https://arxiv.org/html/2606.16022v1">arXiv</a> 
-                <!-- <a href="...">code</a> -->
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:16px;width:20%;vertical-align:middle">
-                <video width="200" autoplay loop muted playsinline>
-                  <source src="project/safemonitor.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">
-                  <span class="papertitle">Learning Safe-Stoppability Monitors for Humanoid Robots</span>
-                </a>
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                Yifan Sun, Yiyuan Pan, <strong>Shangtao Li</strong>, Caiwu Ding,
-                <br>
-                Tao Cui, Lingyun Wang, Changliu Liu.
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                <em style="color: #76B900;">Intelligent Robots and Systems (</em><strong>IROS</strong><em style="color: #76B900;">), 2026</em>
-                <br>
-                <span style="display:block; height:0.5em;"></span>
-                <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">webpage</a> |
-                <a href="https://arxiv.org/pdf/2603.22703">pdf</a> |
-                <a href="https://arxiv.org/abs/2603.22703">arXiv</a> 
-                <!-- <a href="...">code</a> -->
-                <p></p>
-              </td>
-            </tr>
-          </tbody></table>
+  <body id="top">
+    <nav class="site-bar" aria-label="Site navigation">
+      <div class="site-bar-inner">
+        <a href="#top">Shangtao Li</a>
+        <a href="#research">Research</a>
+      </div>
+    </nav>
 
-          <table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;"><tbody>
-            <tr>
-              <td>
-                <h2>Education</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src="images/cmu_logo.jpg" alt="UC Berkeley logo" style="width:120px;max-width:100%;object-fit:contain;">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Carnegie Mellon University</strong>
-                <br>
-                M.S. in Mechanical Engineering
-                <br>
-                Expected 2027
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src="images/ucb_logo.svg" alt="cmu logo" style="width:120px;max-width:100%;object-fit:contain;">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>University of California, Berkeley</strong>
-                <br>
-                Visiting Student
-                <br>
-                2023.8 - 2023.12
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src="images/xjtu.jpg" alt="cmu logo" style="width:120px;max-width:100%;object-fit:contain;">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Xi'an Jiaotong University</strong>
-                <br>
-                B.Eng. in Mechanical Engineering
-                <br>
-                2021.9 - 2025.6
-              </td>
-            </tr>
-            
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  This website is adapted from the <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron website template</a>.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
+    <main class="page">
+      <header class="page-head">
+        <div class="hero">
+          <img class="portrait" src="images/shangtaoli_2.jpg" alt="Portrait of Shangtao Li">
+          <div class="hero-copy">
+            <h1>Shangtao Li</h1>
+            <p class="tagline">M.S. Student · Carnegie Mellon University</p>
+            <p class="contact">
+              <a href="mailto:shangtal@andrew.cmu.edu">shangtal@andrew.cmu.edu</a>
+            </p>
+            <nav class="profile-links" aria-label="Profile links">
+              <a href="https://scholar.google.com/citations?user=oX06uKIAAAAJ&amp;hl=en">Google Scholar</a>
+              <span aria-hidden="true">/</span>
+              <a href="https://x.com/ShangtaoLi">Twitter</a>
+              <span aria-hidden="true">/</span>
+              <a href="https://github.com/ShangtaoLi/">GitHub</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <section aria-labelledby="about-title">
+        <h2 id="about-title" class="section-title">About</h2>
+        <div class="about-copy">
+          <p>
+            I am a second-year M.S. student in
+            <a href="https://www.meche.engineering.cmu.edu/">Mechanical Engineering</a>
+            at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by
+            Prof.&nbsp;<a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu&nbsp;Liu</a>.
+            Previously, I was a visiting student at
+            <a href="https://me.berkeley.edu/">UC Berkeley</a>, working with
+            Prof.&nbsp;<a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi&nbsp;Tomizuka</a>.
+            I received my B.E. in Mechanical Engineering from
+            <a href="https://en.xjtu.edu.cn/">Xi'an Jiaotong University</a>, advised by
+            Prof.&nbsp;<a href="https://gr.xjtu.edu.cn/web/zeqiji/homepage">Qiji&nbsp;Ze</a>.
+          </p>
+          <p>
+            My research focuses on building robot learning systems that adapt and improve beyond
+            their initial training. I am particularly interested in how robots can predict the long-term
+            consequences of their behavior and use these predictions to
+            evaluate, steer, and efficiently improve pretrained policies for complex real-world tasks.
+          </p>
+        </div>
+      </section>
+
+      <section id="research" aria-labelledby="publication-title">
+        <h2 id="publication-title" class="section-title">Publication</h2>
+
+        <div class="publications">
+          <article class="publication">
+            <video autoplay loop muted playsinline preload="metadata" aria-label="λ-Reachability humanoid safety demonstration">
+              <source src="project/lambda_reach.MOV" type="video/mp4">
+            </video>
+            <div class="publication-copy">
+              <p class="eyebrow">Preprint · 2026</p>
+              <h3>
+                <a href="https://arxiv.org/html/2606.16022v1">λ-Reachability: Geometric-Horizon Safety Bellman Equations for Humanoid Safety</a>
+              </h3>
+              <p class="authors">
+                <a href="https://ruichen.pub/">Rui Chen</a>,
+                <strong><a href="index.html">Shangtao Li</a></strong>,
+                <a href="https://yifansun98.github.io/">Yifan Sun</a>,
+                <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
+              </p>
+              <p class="paper-links">
+                <a href="https://arxiv.org/pdf/2606.16022v1">PDF</a>
+                <a href="https://arxiv.org/html/2606.16022v1">arXiv</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="publication">
+            <video autoplay loop muted playsinline preload="metadata" aria-label="Safe-stoppability monitor demonstration">
+              <source src="project/safemonitor.mp4" type="video/mp4">
+            </video>
+            <div class="publication-copy">
+              <p class="eyebrow">IROS · 2026</p>
+              <h3>
+                <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">Learning Safe-Stoppability Monitors for Humanoid Robots</a>
+              </h3>
+              <p class="authors">
+                <a href="https://yifansun98.github.io/">Yifan Sun</a>,
+                <a href="https://pyywill.github.io/">Yiyuan Pan</a>,
+                <strong><a href="index.html">Shangtao Li</a></strong>,
+                <a href="https://www.linkedin.com/in/caiwu-ding-102a62119/">Caiwu Ding</a>,
+                Tao Cui, Lingyun Wang,
+                <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
+              </p>
+              <p class="paper-links">
+                <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">Project</a>
+                <a href="https://arxiv.org/pdf/2603.22703">PDF</a>
+                <a href="https://arxiv.org/abs/2603.22703">arXiv</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="education-title">
+        <h2 id="education-title" class="section-title">Education</h2>
+        <div class="education-list">
+          <article class="education-item">
+            <img src="images/cmu_logo.jpg" alt="Carnegie Mellon University logo">
+            <div>
+              <h3>Carnegie Mellon University</h3>
+              <p>M.S. in Mechanical Engineering</p>
+            </div>
+            <time>Expected 2027</time>
+          </article>
+          <article class="education-item">
+            <img src="images/ucb_logo.svg" alt="University of California, Berkeley logo">
+            <div>
+              <h3>University of California, Berkeley</h3>
+              <p>Visiting Student</p>
+            </div>
+            <time>Aug 2023 – Dec 2023</time>
+          </article>
+          <article class="education-item">
+            <img src="images/xjtu.jpg" alt="Xi'an Jiaotong University logo">
+            <div>
+              <h3>Xi'an Jiaotong University</h3>
+              <p>B.E. in Mechanical Engineering</p>
+            </div>
+            <time>Sep 2021–Jun 2025</time>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026 Shangtao Li</span>
+        <span>Robot learning · Control</span>
+      </footer>
+    </main>
   </body>
 </html>
