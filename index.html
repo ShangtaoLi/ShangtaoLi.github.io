@@ -146,12 +146,38 @@
       }
 
       .portrait {
+        position: relative;
         width: 200px;
-        height: auto;
+        aspect-ratio: 1;
         flex: 0 0 200px;
         display: block;
+        overflow: hidden;
+        background: #fff;
         border-radius: 12px;
         box-shadow: 0 8px 28px rgba(28, 27, 26, 0.1);
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .portrait-hover {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+
+      @media (hover: hover) {
+        .portrait:hover .portrait-primary {
+          opacity: 0;
+        }
+
+        .portrait:hover .portrait-hover {
+          opacity: 1;
+        }
       }
 
       .profile-links {
@@ -188,7 +214,16 @@
         font-size: 1.55rem;
       }
 
-      .publication {
+      #publication-title {
+        margin-bottom: 0;
+      }
+
+      #projects-title {
+        margin-bottom: 0;
+      }
+
+      .publication,
+      .project-item {
         display: grid;
         grid-template-columns: 200px minmax(0, 1fr);
         gap: 22px;
@@ -197,7 +232,8 @@
         border-bottom: 1px solid var(--line);
       }
 
-      .publication video {
+      .publication video,
+      .project-item img {
         display: block;
         width: 200px;
         max-width: 100%;
@@ -260,7 +296,7 @@
 
       .education-list {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 28px;
       }
 
@@ -313,11 +349,28 @@
         white-space: nowrap;
       }
 
+      .project-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .project-item h3 {
+        margin-bottom: 6px;
+        font-size: 1rem;
+      }
+
+      .project-item > div > p:last-child {
+        margin: 0;
+        color: var(--soft);
+        font-size: 0.84rem;
+        line-height: 1.55;
+      }
+
       footer {
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        margin-top: 46px;
+        margin-top: 20px;
         padding-top: 16px;
         border-top: 1px solid var(--line);
         color: var(--muted);
@@ -366,12 +419,14 @@
           flex-basis: auto;
         }
 
-        .publication {
+        .publication,
+        .project-item {
           grid-template-columns: 1fr;
           gap: 14px;
         }
 
-        .publication video {
+        .publication video,
+        .project-item img {
           width: 100%;
         }
 
@@ -415,7 +470,10 @@
     <main class="page">
       <header class="page-head">
         <div class="hero">
-          <img class="portrait" src="images/shangtaoli_2.jpg" alt="Portrait of Shangtao Li">
+          <div class="portrait">
+            <img class="portrait-primary" src="images/shangtaoli_2.jpg" alt="Portrait of Shangtao Li">
+            <img class="portrait-hover" src="images/shangtaoli_1.jpeg" alt="" aria-hidden="true">
+          </div>
           <div class="hero-copy">
             <h1>Shangtao Li</h1>
             <p class="tagline">M.S. Student · Carnegie Mellon University</p>
@@ -439,6 +497,8 @@
             <a href="https://www.meche.engineering.cmu.edu/">Mechanical Engineering</a>
             at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by
             Prof.&nbsp;<a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu&nbsp;Liu</a>.
+            Also, I'm fortunate to work with
+            Prof.&nbsp;<a href="https://jiaoyangli.me/">Jiaoyang&nbsp;Li</a>.
             Previously, I was a visiting student at
             <a href="https://me.berkeley.edu/">UC Berkeley</a>, working with
             Prof.&nbsp;<a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi&nbsp;Tomizuka</a>.
@@ -460,8 +520,8 @@
 
         <div class="publications">
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" aria-label="EgoX cross-embodiment manipulation demonstration">
-              <source src="project/egox.mov" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/poster.jpg" aria-label="EgoX cross-embodiment manipulation demonstration">
+              <source src="project/egox/video.mov" type="video/mp4">
             </video>
             <div class="publication-copy">
               <p class="eyebrow">RSS DEX-Manip Workshop · 2026</p>
@@ -492,8 +552,8 @@
           </article>
 
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" aria-label="ReStruct robot behavior steering demonstration">
-              <source src="project/restruct.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/restruct/poster.jpg" aria-label="ReStruct robot behavior steering demonstration">
+              <source src="project/restruct/video.mp4" type="video/mp4">
             </video>
             <div class="publication-copy">
               <p class="eyebrow">Preprint · 2026</p>
@@ -515,8 +575,8 @@
           </article>
 
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" aria-label="λ-Reachability humanoid safety demonstration">
-              <source src="project/lambda_reach.MOV" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/lambda_reach/poster.jpg" aria-label="λ-Reachability humanoid safety demonstration">
+              <source src="project/lambda_reach/video.mp4" type="video/mp4">
             </video>
             <div class="publication-copy">
               <p class="eyebrow">Preprint · 2026</p>
@@ -537,8 +597,8 @@
           </article>
 
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" aria-label="Safe-stoppability monitor demonstration">
-              <source src="project/safehumanoid.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/safehumanoid/poster.jpg" aria-label="Safe-stoppability monitor demonstration">
+              <source src="project/safehumanoid/video.mp4" type="video/mp4">
             </video>
             <div class="publication-copy">
               <p class="eyebrow">IROS · 2026</p>
@@ -557,6 +617,36 @@
                 <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">Project</a>
                 <a href="https://arxiv.org/pdf/2603.22703">PDF</a>
                 <a href="https://arxiv.org/abs/2603.22703">arXiv</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-title">
+        <h2 id="projects-title" class="section-title">Selected Projects</h2>
+        <div class="project-list">
+          <article class="project-item">
+            <img src="project/wearable/overview.png" alt="Overview of sensing, estimation, and assistance in the wearable ankle system">
+            <div>
+              <p class="eyebrow">UC Berkeley · 2023</p>
+              <h3>Development of an Ankle Manipulator for Human Assistance</h3>
+              <p>
+                Developed a wearable ankle-assistance prototype aimed at providing on-demand balance support.
+                Integrated IMU and plantar-pressure sensing with motor control, redesigned the wearable enclosure,
+                and improved neural gait-phase prediction using recent pressure measurements.
+              </p>
+            </div>
+          </article>
+          <article class="project-item">
+            <img src="project/kresling/overview.jpeg" alt="Diagram of the magnetic actuation and compression of a Kresling origami millirobot">
+            <div>
+              <p class="eyebrow">Outstanding Undergraduate Thesis (Top 1%) · 2025</p>
+              <h3>Magnetically Actuated Kresling Origami Millirobot</h3>
+              <p>
+                Developed a magneto-mechanical model linking external magnetic fields to the deformation of a
+                Kresling-origami robot. Validated the magnetic and structural models through MATLAB/COMSOL analysis
+                and compression experiments, and built a miniature camera-focusing prototype.
               </p>
             </div>
           </article>
@@ -595,7 +685,6 @@
 
       <footer>
         <span>© 2026 Shangtao Li</span>
-        <span>Robot learning · Control</span>
       </footer>
     </main>
   </body>
