@@ -9,7 +9,7 @@
     <link rel="icon" href="images/ri.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Serif+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Source+Serif+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1e7053c3-7df6-4f8a-abe6-8641a767d123" data-domains="shangtaoli.github.io"></script>
     <style>
       :root {
@@ -216,7 +216,20 @@
       }
 
       #publication-title {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
         margin-bottom: 0;
+      }
+
+      .publication-note {
+        margin-left: auto;
+        color: var(--muted);
+        font-family: "Lora", Georgia, serif;
+        font-size: 0.72rem;
+        font-weight: 400;
+        line-height: 1.4;
       }
 
       #projects-title {
@@ -276,6 +289,11 @@
         font-family: "Lora", Georgia, serif;
         font-size: 0.84rem;
         line-height: 1.5;
+      }
+
+      .authors strong {
+        color: var(--text);
+        font-weight: 700;
       }
 
       .authors a {
@@ -529,7 +547,10 @@
       </section>
 
       <section id="research" aria-labelledby="publication-title">
-        <h2 id="publication-title" class="section-title">Publication</h2>
+        <h2 id="publication-title" class="section-title">
+          Selected Publications
+          <span class="publication-note">* Equal contribution</span>
+        </h2>
 
         <div class="publications">
           <article class="publication">
@@ -544,7 +565,7 @@
                 <a href="https://wudicbh.github.io/">Binghong Chen*</a>,
                 <a href="https://yaruniu.com/">Yaru Niu*</a>,
                 <a href="https://www.chad-yao.com/">Changwei Yao*</a>, Zhenlong Fang*,
-                <strong><a href="index.html">Shangtao Li*</a></strong>,
+                <strong>Shangtao Li*</strong>,
                 <a href="https://revanthsenthil.github.io/">Revanth Krishna Senthilkumaran</a>,
                 <a href="https://www.shuai-zhou.com/">Shuai Zhou</a>,
                 <a href="https://yueminm.github.io/">Yuemin Mao</a>,
@@ -554,7 +575,6 @@
                 <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>,
                 <a href="https://jonfranc.com/">Jonathan Francis</a>,
                 <a href="https://www.andrew.cmu.edu/user/dingzhao/">Ding Zhao</a>
-                (* equal contribution)
               </p>
               <p class="venue"><strong>RSS 2026</strong> Dex Manipulation Workshop</p>
               <p class="paper-links">
@@ -575,7 +595,7 @@
               <p class="authors">
                 <a href="https://pyywill.github.io/">Yiyuan Pan</a>,
                 <a href="https://hanjianghu.net/">Hanjiang Hu</a>,
-                <strong><a href="index.html">Shangtao Li</a></strong>,
+                <strong>Shangtao Li</strong>,
                 <a href="https://xushengluo92.github.io/">Xusheng Luo</a>,
                 <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
               </p>
@@ -597,7 +617,7 @@
               </h3>
               <p class="authors">
                 <a href="https://ruichen.pub/">Rui Chen</a>,
-                <strong><a href="index.html">Shangtao Li</a></strong>,
+                <strong>Shangtao Li</strong>,
                 <a href="https://yifansun98.github.io/">Yifan Sun</a>,
                 <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
               </p>
@@ -621,7 +641,7 @@
               <p class="authors">
                 <a href="https://yifansun98.github.io/">Yifan Sun</a>,
                 <a href="https://pyywill.github.io/">Yiyuan Pan</a>,
-                <strong><a href="index.html">Shangtao Li</a></strong>,
+                <strong>Shangtao Li</strong>,
                 <a href="https://www.linkedin.com/in/caiwu-ding-102a62119/">Caiwu Ding</a>,
                 Tao Cui, Lingyun Wang,
                 <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
