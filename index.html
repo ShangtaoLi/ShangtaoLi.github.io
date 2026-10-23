@@ -9,15 +9,14 @@
     <link rel="icon" href="images/ri.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Source+Serif+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:wght@600&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1e7053c3-7df6-4f8a-abe6-8641a767d123" data-domains="shangtaoli.github.io"></script>
     <style>
       :root {
         --background: #fff;
-        --surface: #fff;
         --text: #1c1b1a;
         --soft: #4a4744;
-        --muted: #716c66;
+        --muted: #57524e;
         --line: #e5e0d9;
         --accent: #1f4e79;
         --accent-hover: #163a5f;
@@ -36,8 +35,9 @@
         margin: 0;
         background: var(--background);
         color: var(--text);
-        font-family: "Lora", Georgia, serif;
+        font-family: "Source Serif 4", Georgia, serif;
         font-size: 16px;
+        font-weight: 400;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
       }
@@ -51,7 +51,8 @@
       a:focus-visible {
         color: var(--accent-hover);
         text-decoration: underline;
-        text-underline-offset: 0.15em;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
       }
 
       h1,
@@ -64,52 +65,24 @@
       h1,
       h2,
       h3 {
-        font-family: "Source Serif Pro", Georgia, serif;
+        font-family: "Baskervville", Georgia, serif;
+        font-weight: 600;
         line-height: 1.2;
       }
 
       .page {
-        max-width: 950px;
+        max-width: 1040px;
         margin: 0 auto;
         padding: 64px 24px;
       }
 
       .page-head {
-        margin-bottom: 48px;
-      }
-
-      .site-bar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: #111;
-        color: var(--surface);
-      }
-
-      .site-bar-inner {
-        max-width: 950px;
-        margin: 0 auto;
-        padding: 14px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: "Lora", Georgia, serif;
-        font-size: 1rem;
-        font-weight: 600;
-        line-height: 1.4;
-      }
-
-      .site-bar a {
-        color: inherit;
-      }
-
-      .site-bar-inner > a:first-child {
-        font-size: 1.18rem;
+        margin-bottom: 36px;
       }
 
       h1 {
-        margin-bottom: 4px;
-        font-size: 2.7rem;
+        margin-bottom: 26px;
+        font-size: 2.5rem;
         letter-spacing: -0.02em;
       }
 
@@ -118,22 +91,28 @@
         color: var(--muted);
       }
 
+      .tagline a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+
+      .tagline a:hover,
+      .tagline a:focus-visible {
+        color: var(--accent);
+      }
+
       .hero {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 96px;
-        transform: translateX(24px);
+        justify-content: flex-start;
+        gap: 84px;
       }
 
       .hero-copy {
         min-width: 0;
-        flex: 0 1 430px;
-      }
-
-      .contact {
-        margin: 10px 0 0;
-        font-size: 0.9rem;
+        flex: 1;
       }
 
       .about-copy p {
@@ -144,6 +123,13 @@
 
       .about-copy p:last-child {
         margin-bottom: 0;
+      }
+
+      .about-copy a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
       }
 
       .portrait {
@@ -186,18 +172,18 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 8px;
-        margin-top: 15px;
-        font-size: 0.86rem;
+        margin-top: 19px;
+        font-size: 0.875rem;
       }
 
       .profile-links a {
-        color: var(--accent);
+        color: var(--text);
         font-weight: 600;
       }
 
       .profile-links a:hover,
       .profile-links a:focus-visible {
-        color: var(--accent-hover);
+        color: var(--accent);
       }
 
       .profile-links span {
@@ -215,6 +201,42 @@
         font-size: 1.55rem;
       }
 
+      .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .highlight-item {
+        margin: 0;
+      }
+
+      .highlight-item video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .highlight-item figcaption {
+        margin-top: 8px;
+        font-family: "Baskervville", Georgia, serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .highlight-item figcaption a {
+        color: inherit;
+      }
+
+      .highlight-item figcaption a:hover,
+      .highlight-item figcaption a:focus-visible {
+        color: var(--accent);
+      }
+
       #publication-title {
         display: flex;
         align-items: baseline;
@@ -226,10 +248,43 @@
       .publication-note {
         margin-left: auto;
         color: var(--muted);
-        font-family: "Lora", Georgia, serif;
+        font-family: "Source Serif 4", Georgia, serif;
         font-size: 0.72rem;
         font-weight: 400;
         line-height: 1.4;
+      }
+
+      .publication-filter {
+        position: relative;
+      }
+
+      .publication-filter > input {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .publication-filter > label {
+        display: inline-block;
+        margin: 9px 14px 0 0;
+        color: var(--muted);
+        font-size: 0.875rem;
+        cursor: pointer;
+      }
+
+      .publication-filter > input:checked + label {
+        color: var(--text);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+
+      .publication-filter > input:focus-visible + label {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      #publication-selected:checked ~ .publications .publication:not(.selected) {
+        display: none;
       }
 
       #projects-title {
@@ -242,7 +297,7 @@
         grid-template-columns: 200px minmax(0, 1fr);
         gap: 22px;
         align-items: center;
-        padding: 8px 0 20px;
+        padding: 24px 0;
         border-bottom: 1px solid var(--line);
       }
 
@@ -258,9 +313,10 @@
         background: #fff;
       }
 
-      .publication h3 {
+      .publication h3,
+      .project-item h3 {
         margin-bottom: 8px;
-        font-size: 1.06rem;
+        font-size: 1.2rem;
         overflow-wrap: anywhere;
       }
 
@@ -273,27 +329,30 @@
         color: var(--accent);
       }
 
-      .eyebrow {
-        margin-bottom: 5px;
-        color: var(--accent);
-        font-family: "Lora", Georgia, serif;
-        font-size: 0.75rem;
+      .title-digit {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-variant-numeric: lining-nums;
         font-weight: 600;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
+      }
+
+      .eyebrow {
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 0.875rem;
+        font-weight: 600;
+        line-height: 1.5;
       }
 
       .authors {
         margin-bottom: 8px;
         color: var(--soft);
-        font-family: "Lora", Georgia, serif;
-        font-size: 0.84rem;
+        font-size: 0.875rem;
         line-height: 1.5;
       }
 
       .authors strong {
         color: var(--text);
-        font-weight: 700;
+        font-weight: 600;
       }
 
       .authors a {
@@ -306,9 +365,9 @@
       }
 
       .venue {
-        margin: -3px 0 8px;
+        margin: 0 0 8px;
         color: var(--text);
-        font-size: 0.84rem;
+        font-size: 0.875rem;
         font-weight: 500;
         line-height: 1.5;
       }
@@ -321,8 +380,17 @@
         display: flex;
         gap: 13px;
         margin: 0;
-        font-size: 0.82rem;
+        font-size: 0.875rem;
         font-weight: 600;
+      }
+
+      .paper-links a {
+        color: var(--text);
+      }
+
+      .paper-links a:hover,
+      .paper-links a:focus-visible {
+        color: var(--accent);
       }
 
       .education-list {
@@ -363,15 +431,33 @@
 
       .education-item h3 {
         margin-bottom: 2px;
-        font-size: 0.88rem;
-        white-space: nowrap;
+        font-size: 0.875rem;
       }
 
       .education-item p,
       .education-item time {
         margin: 0;
         color: var(--muted);
-        font-size: 0.84rem;
+        font-size: 0.875rem;
+      }
+
+      .education-item a,
+      footer a {
+        color: inherit;
+      }
+
+      .education-item a {
+        color: var(--soft);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+
+      .education-item a:hover,
+      .education-item a:focus-visible,
+      footer a:hover,
+      footer a:focus-visible {
+        color: var(--accent);
       }
 
       .education-item time {
@@ -385,16 +471,32 @@
         gap: 0;
       }
 
-      .project-item h3 {
-        margin-bottom: 6px;
-        font-size: 1rem;
+      .project-item:has(.project-details[open]) > div {
+        align-self: start;
       }
 
-      .project-item > div > p:last-child {
-        margin: 0;
+      .project-details {
+        display: flow-root;
+        margin-top: 8px;
         color: var(--soft);
-        font-size: 0.84rem;
-        line-height: 1.55;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      .project-details summary {
+        width: fit-content;
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .project-details[open] summary {
+        float: left;
+        margin-right: 8px;
+      }
+
+      .project-details p {
+        margin: 0;
       }
 
       footer {
@@ -408,6 +510,17 @@
         font-size: 0.78rem;
       }
 
+      .reveal-block {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .reveal-block.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       @media (max-width: 640px) {
         body {
           font-size: 15px;
@@ -418,11 +531,7 @@
         }
 
         .page-head {
-          margin-bottom: 20px;
-        }
-
-        .site-bar-inner {
-          padding-inline: 20px;
+          margin-bottom: 16px;
         }
 
         h1 {
@@ -432,8 +541,7 @@
         .hero {
           flex-direction: column;
           align-items: center;
-          gap: 32px;
-          transform: none;
+          gap: 28px;
         }
 
         .hero-copy {
@@ -450,10 +558,24 @@
           flex-basis: auto;
         }
 
+        .highlights-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
         .publication,
         .project-item {
           grid-template-columns: 1fr;
           gap: 14px;
+        }
+
+        .project-details[open] summary {
+          float: none;
+          margin-right: 0;
+        }
+
+        .project-details p {
+          margin-top: 8px;
         }
 
         .publication video,
@@ -472,6 +594,10 @@
           border-bottom: 1px solid var(--line);
         }
 
+        .education-item:last-child {
+          border-bottom: 0;
+        }
+
         .education-item img {
           width: 44px;
           height: 44px;
@@ -482,22 +608,21 @@
         }
       }
 
-      @media (prefers-reduced-motion: reduce) {
+      @media print, (prefers-reduced-motion: reduce) {
         * {
           scroll-behavior: auto !important;
+        }
+
+        .reveal-block {
+          opacity: 1;
+          transform: none;
+          transition: none;
         }
       }
     </style>
   </head>
 
   <body id="top">
-    <nav class="site-bar" aria-label="Site navigation">
-      <div class="site-bar-inner">
-        <a href="#top">Shangtao Li</a>
-        <a href="#research">Research</a>
-      </div>
-    </nav>
-
     <main class="page">
       <header class="page-head">
         <div class="hero">
@@ -507,68 +632,84 @@
           </div>
           <div class="hero-copy">
             <h1>Shangtao Li</h1>
-            <p class="tagline">M.S. Student · Carnegie Mellon University</p>
-            <p class="contact">
-              <a href="mailto:shangtal@andrew.cmu.edu">shangtal@andrew.cmu.edu</a>
+            <p class="tagline">
+              M.S. student at <a href="https://www.cmu.edu/">CMU</a>, advised by
+              <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu&nbsp;Liu</a>.
+              Previously at <a href="https://www.berkeley.edu/">UC Berkeley</a>. B.E. from
+              <a href="https://en.xjtu.edu.cn/">XJTU</a>.
             </p>
             <nav class="profile-links" aria-label="Profile links">
+              <a href="mailto:shangtal@andrew.cmu.edu">Email</a>
+              <span aria-hidden="true">|</span>
               <a href="https://scholar.google.com/citations?user=oX06uKIAAAAJ&amp;hl=en">Google Scholar</a>
-              <span aria-hidden="true">/</span>
+              <span aria-hidden="true">|</span>
               <a href="https://x.com/ShangtaoLi">Twitter</a>
             </nav>
           </div>
         </div>
       </header>
 
+      <section aria-labelledby="highlights-title">
+        <h2 id="highlights-title" class="section-title">Highlights</h2>
+        <div class="highlights-grid">
+          <figure class="highlight-item">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/poster.jpg?v=3" aria-label="EgoX cross-embodiment manipulation demonstration">
+              <source src="project/egox/video.mp4" type="video/mp4">
+            </video>
+            <figcaption><a href="https://egox-embodiment.github.io/">EgoX</a></figcaption>
+          </figure>
+          <figure class="highlight-item">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/lambda_reach/poster.jpg" aria-label="λ-Reachability humanoid safety demonstration">
+              <source src="project/lambda_reach/video.mp4" type="video/mp4">
+            </video>
+            <figcaption><a href="https://intelligent-control-lab.github.io/lambda_reach/">λ-Reachability</a></figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section aria-labelledby="about-title">
         <h2 id="about-title" class="section-title">About</h2>
         <div class="about-copy">
           <p>
-            I am a second-year M.S. student in
-            <a href="https://www.meche.engineering.cmu.edu/">Mechanical Engineering</a>
-            at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by
-            Prof.&nbsp;<a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu&nbsp;Liu</a>.
-            Also, I'm fortunate to work with
-            Prof.&nbsp;<a href="https://jiaoyangli.me/">Jiaoyang&nbsp;Li</a>.
-            Previously, I was a visiting student at
-            <a href="https://me.berkeley.edu/">UC Berkeley</a>, working with
-            Prof.&nbsp;<a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi&nbsp;Tomizuka</a>.
-            I received my B.E. in Mechanical Engineering from
-            <a href="https://en.xjtu.edu.cn/">Xi'an Jiaotong University</a>, advised by
-            Prof.&nbsp;<a href="https://gr.xjtu.edu.cn/web/zeqiji/homepage">Qiji&nbsp;Ze</a>.
-          </p>
-          <p>
-            My research focuses on building robot learning systems that adapt and improve beyond
-            their initial training. I am particularly interested in how robots can predict the long-term
-            consequences of their behavior and use these predictions to
-            evaluate, steer, and efficiently improve pretrained policies for complex real-world tasks.
+            My research focuses on developing robot learning systems that adapt to new tasks and improve through
+            interaction with the physical world. I am interested in how learning from diverse experience and predicting
+            action outcomes can support long-horizon decision-making and policy improvement.
           </p>
         </div>
       </section>
 
       <section id="research" aria-labelledby="publication-title">
         <h2 id="publication-title" class="section-title">
-          Selected Publications
+          Publication
           <span class="publication-note">* Equal contribution</span>
         </h2>
 
-        <div class="publications">
-          <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/poster.jpg" aria-label="EgoX cross-embodiment manipulation demonstration">
-              <source src="project/egox/video.mov" type="video/mp4">
+        <div class="publication-filter" role="group" aria-label="Publication filter">
+          <input type="radio" name="publication-filter" id="publication-selected" checked>
+          <label for="publication-selected">Selected</label>
+          <input type="radio" name="publication-filter" id="publication-all">
+          <label for="publication-all">All</label>
+
+          <div class="publications">
+          <article class="publication selected">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/publication-poster.jpg?v=1" aria-label="EgoX humanoid manipulation demonstration">
+              <source src="project/egox/publication.mp4?v=1" type="video/mp4">
             </video>
             <div class="publication-copy">
               <h3>
-                <a href="https://dex-manipulation.github.io/rss2026/pdfs/27_Egocentric_Cross_Embodiment.pdf">Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming</a>
+                <a href="https://egox-embodiment.github.io/">EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming</a>
               </h3>
               <p class="authors">
-                <a href="https://wudicbh.github.io/">Binghong Chen*</a>,
                 <a href="https://yaruniu.com/">Yaru Niu*</a>,
-                <a href="https://www.chad-yao.com/">Changwei Yao*</a>, Zhenlong Fang*,
+                <a href="https://wudicbh.github.io/">Binghong Chen*</a>,
+                <a href="https://www.chad-yao.com/">Changwei Yao*</a>,
                 <strong>Shangtao Li*</strong>,
+                Zhenlong Fang,
                 <a href="https://revanthsenthil.github.io/">Revanth Krishna Senthilkumaran</a>,
                 <a href="https://www.shuai-zhou.com/">Shuai Zhou</a>,
                 <a href="https://yueminm.github.io/">Yuemin Mao</a>,
+                <a href="https://kalieching.github.io/">Kalie Ching</a>, Po-Ju Chao, Yudong Luo,
+                <a href="https://patricia1019.github.io/">Peiqi Yu</a>, Heng Zhang,
                 <a href="https://haozhang-thu.github.io/">Hao Zhang</a>,
                 <a href="https://www.linkedin.com/in/bingqing-chen-631b754a">Bingqing Chen</a>, Chen Qiu,
                 <a href="https://etaic.github.io/">Eric H. Tseng</a>,
@@ -576,21 +717,68 @@
                 <a href="https://jonfranc.com/">Jonathan Francis</a>,
                 <a href="https://www.andrew.cmu.edu/user/dingzhao/">Ding Zhao</a>
               </p>
-              <p class="venue"><strong>RSS 2026</strong> Dex Manipulation Workshop</p>
+              <p class="venue">Under review</p>
               <p class="paper-links">
-                <a href="https://dex-manipulation.github.io/rss2026/pdfs/27_Egocentric_Cross_Embodiment.pdf">PDF</a>
-                <a href="https://dex-manipulation.github.io/rss2026/">Workshop</a>
+                <a href="https://egox-embodiment.github.io/">Project</a>
+                <a href="https://egox-embodiment.github.io/assets/egox.pdf">PDF</a>
               </p>
             </div>
           </article>
 
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/restruct/poster.jpg" aria-label="ReStruct robot behavior steering demonstration">
-              <source src="project/restruct/video.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/maniskillformer/poster.jpg?v=3" aria-label="ManiSkillFormer cone-stacking demonstration">
+              <source src="project/maniskillformer/video.mp4?v=2" type="video/mp4">
             </video>
             <div class="publication-copy">
               <h3>
-                <a href="https://arxiv.org/html/2606.26588v1">Inference-Time Robot Behavior Steering through Physically-Aware Reconfiguration of Task-Structure</a>
+                <a href="https://patricia1019.github.io/ManiSkillFormer/">ManiSkillFormer: Demonstration-Free Compositional Manipulation via Geometric Contracts and Agentic Skill Graph</a>
+              </h3>
+              <p class="authors">
+                <a href="https://patricia1019.github.io/">Peiqi Yu</a>,
+                <a href="https://mosamdabhi.github.io/">Mosam Dabhi</a>,
+                <strong>Shangtao Li</strong>,
+                <a href="https://icontrol.ri.cmu.edu/people/bowei.html">Bowei Li</a>,
+                <a href="https://www.ri.cmu.edu/ri-faculty/laszlo-jeni/">László A. Jeni</a>,
+                <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
+              </p>
+              <p class="venue">Under review</p>
+              <p class="paper-links">
+                <a href="https://patricia1019.github.io/ManiSkillFormer/">Project</a>
+                <a href="https://arxiv.org/pdf/2609.16331">PDF</a>
+                <a href="https://arxiv.org/abs/2609.16331">arXiv</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="publication">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/robofin3d/poster.jpg?v=1" aria-label="Robotic surface finishing scan-and-plan demonstration">
+              <source src="project/robofin3d/video.mp4?v=1" type="video/mp4">
+            </video>
+            <div class="publication-copy">
+              <h3>
+                <a href="https://icontrol.ri.cmu.edu/research/polishing.html">RoboFin<span class="title-digit">3</span>D: A Sim-to-Real Platform for Robotic Surface Finishing</a>
+              </h3>
+              <p class="authors">
+                Haowei Wen*, <strong>Shangtao Li*</strong>, Vaibhav Sanjay, Philip Huang,
+                <a href="https://jiaoyangli.me/">Jiaoyang Li</a>,
+                <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Changliu Liu</a>
+              </p>
+              <p class="venue"><strong>IROS 2026</strong> S2RCC Workshop</p>
+              <p class="paper-links">
+                <a href="https://icontrol.ri.cmu.edu/research/polishing.html">Project</a>
+                <a href="https://arxiv.org/pdf/2609.37560">PDF</a>
+                <a href="https://arxiv.org/abs/2609.37560">arXiv</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="publication selected">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/restruct/poster.jpg?v=6" aria-label="ReStruct steered robot behavior demonstration">
+              <source src="project/restruct/video.mp4?v=6" type="video/mp4">
+            </video>
+            <div class="publication-copy">
+              <h3>
+                <a href="https://pyywill.github.io/restruct-corl2026/">Inference-Time Robot Behavior Steering through Physically-Aware Reconfiguration of Task-Structure</a>
               </h3>
               <p class="authors">
                 <a href="https://pyywill.github.io/">Yiyuan Pan</a>,
@@ -601,13 +789,14 @@
               </p>
               <p class="venue"><strong>CoRL 2026</strong></p>
               <p class="paper-links">
+                <a href="https://pyywill.github.io/restruct-corl2026/">Project</a>
                 <a href="https://arxiv.org/pdf/2606.26588v1">PDF</a>
                 <a href="https://arxiv.org/abs/2606.26588">arXiv</a>
               </p>
             </div>
           </article>
 
-          <article class="publication">
+          <article class="publication selected">
             <video autoplay loop muted playsinline preload="metadata" poster="project/lambda_reach/poster.jpg" aria-label="λ-Reachability humanoid safety demonstration">
               <source src="project/lambda_reach/video.mp4" type="video/mp4">
             </video>
@@ -630,7 +819,7 @@
             </div>
           </article>
 
-          <article class="publication">
+          <article class="publication selected">
             <video autoplay loop muted playsinline preload="metadata" poster="project/safehumanoid/poster.jpg" aria-label="Safe-stoppability monitor demonstration">
               <source src="project/safehumanoid/video.mp4" type="video/mp4">
             </video>
@@ -654,6 +843,7 @@
               </p>
             </div>
           </article>
+          </div>
         </div>
       </section>
 
@@ -663,25 +853,31 @@
           <article class="project-item">
             <img src="project/wearable/overview.png" alt="Overview of sensing, estimation, and assistance in the wearable ankle system">
             <div>
-              <p class="eyebrow">UC Berkeley · 2023</p>
               <h3>Development of an Ankle Manipulator for Human Assistance</h3>
-              <p>
-                Developed a wearable ankle-assistance prototype aimed at providing on-demand balance support.
-                Integrated IMU and plantar-pressure sensing with motor control, redesigned the wearable enclosure,
-                and improved neural gait-phase prediction using recent pressure measurements.
-              </p>
+              <p class="eyebrow">UC Berkeley · 2023</p>
+              <details class="project-details">
+                <summary>Details</summary>
+                <p>
+                  Developed a wearable ankle-assistance prototype aimed at providing on-demand balance support.
+                  Integrated IMU and plantar-pressure sensing with motor control, redesigned the wearable enclosure,
+                  and improved neural gait-phase prediction using recent pressure measurements.
+                </p>
+              </details>
             </div>
           </article>
           <article class="project-item">
             <img src="project/kresling/overview.jpeg" alt="Diagram of the magnetic actuation and compression of a Kresling origami millirobot">
             <div>
-              <p class="eyebrow">Outstanding Undergraduate Thesis (Top 1%) · 2025</p>
               <h3>Magnetically Actuated Kresling Origami Millirobot</h3>
-              <p>
-                Developed a magneto-mechanical model linking external magnetic fields to the deformation of a
-                Kresling-origami robot. Validated the magnetic and structural models through MATLAB/COMSOL analysis
-                and compression experiments, and built a miniature camera-focusing prototype.
-              </p>
+              <p class="eyebrow">XJTU · 2025 · Outstanding Undergraduate Thesis (Top 1%)</p>
+              <details class="project-details">
+                <summary>Details</summary>
+                <p>
+                  Developed a magneto-mechanical model linking external magnetic fields to the deformation of a
+                  Kresling-origami robot. Validated the magnetic and structural models through MATLAB/COMSOL analysis
+                  and compression experiments, and built a miniature camera-focusing prototype.
+                </p>
+              </details>
             </div>
           </article>
         </div>
@@ -695,6 +891,7 @@
             <div>
               <h3>Carnegie Mellon University</h3>
               <p>M.S. in Mechanical Engineering</p>
+              <p>Advisor: <a href="https://icontrol.ri.cmu.edu/people/changliu.html">Prof. Changliu Liu</a></p>
             </div>
             <time>Expected 2027</time>
           </article>
@@ -702,7 +899,8 @@
             <img src="images/ucb_logo.svg" alt="University of California, Berkeley logo">
             <div>
               <h3>University of California, Berkeley</h3>
-              <p>Visiting Student</p>
+              <p>Undergraduate Visiting Program</p>
+              <p>Advisor: <a href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Prof. Masayoshi Tomizuka</a></p>
             </div>
             <time>Aug 2023 – Dec 2023</time>
           </article>
@@ -711,15 +909,65 @@
             <div>
               <h3>Xi'an Jiaotong University</h3>
               <p>B.E. in Mechanical Engineering</p>
+              <p>Advisor: <a href="https://faculty.xjtu.edu.cn/zeqiji/">Prof. Qiji Ze</a></p>
             </div>
-            <time>Sep 2021–Jun 2025</time>
+            <time>Sep 2021 – Jun 2025</time>
           </article>
         </div>
       </section>
 
       <footer>
-        <span>© 2026 Shangtao Li</span>
+        <span>© 2026 Shangtao Li · Site inspired by <a href="https://yanjieze.com/">Yanjie Ze</a>.</span>
       </footer>
     </main>
+
+    <script>
+      (() => {
+        const projects = document.querySelectorAll(".project-item");
+        const mobile = window.matchMedia("(max-width: 640px)");
+        const reserveProjectSpace = () => {
+          projects.forEach((project) => {
+            project.style.minHeight = "";
+            if (mobile.matches) return;
+
+            const details = project.querySelector("details");
+            const wasOpen = details.open;
+            // Reserve the expanded height so toggling Details never moves desktop dividers.
+            details.open = true;
+            const height = Math.ceil(project.getBoundingClientRect().height);
+            details.open = wasOpen;
+            project.style.minHeight = `${height}px`;
+          });
+        };
+
+        reserveProjectSpace();
+        document.fonts.ready.then(reserveProjectSpace);
+        let resizeFrame;
+        window.addEventListener("resize", () => {
+          cancelAnimationFrame(resizeFrame);
+          resizeFrame = requestAnimationFrame(reserveProjectSpace);
+        });
+      })();
+
+      (() => {
+        if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const blocks = document.querySelectorAll(
+          "main > section > .section-title, .highlights-grid, .about-copy, .publication-filter > label, .publication, .project-item, .education-item, footer"
+        );
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        blocks.forEach((block) => {
+          block.classList.add("reveal-block");
+          observer.observe(block);
+        });
+      })();
+    </script>
   </body>
 </html>
