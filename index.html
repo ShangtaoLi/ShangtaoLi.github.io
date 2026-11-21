@@ -9,7 +9,7 @@
     <link rel="icon" href="images/ri.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville:wght@600&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:wght@600&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;display=swap" rel="stylesheet">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1e7053c3-7df6-4f8a-abe6-8641a767d123" data-domains="shangtaoli.github.io"></script>
     <style>
       :root {
@@ -17,6 +17,7 @@
         --text: #1c1b1a;
         --soft: #4a4744;
         --muted: #57524e;
+        --publication-meta: #68625d;
         --line: #e5e0d9;
         --accent: #1f4e79;
         --accent-hover: #163a5f;
@@ -71,13 +72,13 @@
       }
 
       .page {
-        max-width: 1040px;
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 64px 24px;
+        padding: 44px 24px 64px;
       }
 
       .page-head {
-        margin-bottom: 36px;
+        margin-bottom: 12px;
       }
 
       h1 {
@@ -125,18 +126,11 @@
         margin-bottom: 0;
       }
 
-      .about-copy a {
-        color: inherit;
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 0.18em;
-      }
-
       .portrait {
         position: relative;
-        width: 200px;
+        width: 210px;
         aspect-ratio: 1;
-        flex: 0 0 200px;
+        flex: 0 0 210px;
         display: block;
         overflow: hidden;
         background: #fff;
@@ -171,14 +165,19 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
         margin-top: 19px;
-        font-size: 0.875rem;
+        margin-left: -11px;
       }
 
       .profile-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
         color: var(--text);
-        font-weight: 600;
       }
 
       .profile-links a:hover,
@@ -186,55 +185,55 @@
         color: var(--accent);
       }
 
-      .profile-links span {
-        color: var(--muted);
+      .profile-links svg {
+        display: block;
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
       }
 
       section:not(.hero) {
         padding-top: 40px;
       }
 
+      section[aria-labelledby="about-title"] {
+        padding-top: 34px;
+      }
+
       .section-title {
         margin-bottom: 14px;
         padding-bottom: 7px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid #b5afa7;
         font-size: 1.55rem;
       }
 
-      .highlights-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
+      #about-title,
+      .section-divider > .section-title {
+        border-bottom: 0;
       }
 
-      .highlight-item {
-        margin: 0;
+      #about-title {
+        margin-bottom: 10px;
+        padding-bottom: 0;
       }
 
-      .highlight-item video {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: contain;
-        border-radius: 8px;
-        background: #fff;
+      section.section-divider {
+        position: relative;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line);
       }
 
-      .highlight-item figcaption {
-        margin-top: 8px;
-        font-family: "Baskervville", Georgia, serif;
-        font-size: 1rem;
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .highlight-item figcaption a {
-        color: inherit;
-      }
-
-      .highlight-item figcaption a:hover,
-      .highlight-item figcaption a:focus-visible {
-        color: var(--accent);
+      .section-divider::before,
+      footer::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: calc(-1 * clamp(0px, (100vw - 1100px) / 2, 30px));
+        right: calc(-1 * clamp(0px, (100vw - 1100px) / 2, 30px));
+        height: 1px;
+        background: var(--line);
+        pointer-events: none;
       }
 
       #publication-title {
@@ -243,10 +242,10 @@
         flex-wrap: wrap;
         gap: 12px;
         margin-bottom: 0;
+        padding-bottom: 6px;
       }
 
       .publication-note {
-        margin-left: auto;
         color: var(--muted);
         font-family: "Source Serif 4", Georgia, serif;
         font-size: 0.72rem;
@@ -256,6 +255,14 @@
 
       .publication-filter {
         position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        /* Balance visible text edges, including the selected tab underline. */
+        gap: 16px 14px;
+      }
+
+      .publications {
+        width: 100%;
       }
 
       .publication-filter > input {
@@ -265,7 +272,7 @@
 
       .publication-filter > label {
         display: inline-block;
-        margin: 9px 14px 0 0;
+        margin: 0;
         color: var(--muted);
         font-size: 0.875rem;
         cursor: pointer;
@@ -289,24 +296,87 @@
 
       #projects-title {
         margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      #education-title {
+        margin-bottom: 8px;
+        padding-bottom: 0;
       }
 
       .publication,
       .project-item {
         display: grid;
-        grid-template-columns: 200px minmax(0, 1fr);
+        grid-template-columns: calc(120px * 16 / 9) minmax(0, 1fr);
         gap: 22px;
         align-items: center;
-        padding: 24px 0;
-        border-bottom: 1px solid var(--line);
+        padding: 20px 0 30px;
+        border-bottom: 1px solid transparent;
+      }
+
+      .publication::after,
+      .project-item::after {
+        content: "";
+        position: absolute;
+        top: var(--media-divider-top, calc(100% - 1px));
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--item-divider-color, var(--line));
+        pointer-events: none;
+      }
+
+      .project-item {
+        padding: 16px 0 30px;
+      }
+
+      .publications > .publication:first-child {
+        padding-top: 0;
+        align-items: start;
+      }
+
+      .publication-highlight {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .publication-highlight::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto auto;
+        height: 120px;
+        aspect-ratio: 1200 / 618;
+        max-width: 34%;
+        z-index: -1;
+        pointer-events: none;
+        background: url("project/egox/background.jpg?v=2") left center / contain no-repeat;
+        /* The horizontal flip maps these corners to the visible right edge. */
+        border-radius: 8px 0 0 8px;
+        transform: scaleX(-1);
+        opacity: 0.5;
+        mask-image: linear-gradient(to left, transparent 0%, rgb(0 0 0 / 0.15) 30%, #000 100%);
+        transition: opacity 0.25s ease, filter 0.25s ease;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .publication-highlight:hover::before {
+          opacity: 0.75;
+          filter: brightness(1.18);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .publication-highlight::before {
+          transition: none;
+        }
       }
 
       .publication video,
       .project-item img {
         display: block;
-        width: 200px;
+        width: calc(120px * 16 / 9);
         max-width: 100%;
-        height: auto;
+        height: 120px;
         aspect-ratio: 16 / 9;
         object-fit: contain;
         border-radius: 8px;
@@ -320,12 +390,15 @@
         overflow-wrap: anywhere;
       }
 
-      .publication h3 a {
+      .publication h3 a,
+      .venue a {
         color: var(--text);
       }
 
       .publication h3 a:hover,
-      .publication h3 a:focus-visible {
+      .publication h3 a:focus-visible,
+      .venue a:hover,
+      .venue a:focus-visible {
         color: var(--accent);
       }
 
@@ -352,7 +425,26 @@
 
       .authors strong {
         color: var(--text);
-        font-weight: 600;
+        font-weight: 650;
+      }
+
+      .more-authors,
+      .fewer-authors {
+        padding: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        font: inherit;
+        text-decoration: underline dashed;
+        text-underline-offset: 0.18em;
+        cursor: pointer;
+      }
+
+      .more-authors:hover,
+      .more-authors:focus-visible,
+      .fewer-authors:hover,
+      .fewer-authors:focus-visible {
+        color: var(--accent);
       }
 
       .venue {
@@ -367,16 +459,68 @@
         font-weight: 600;
       }
 
+      .venue-year {
+        color: var(--publication-meta);
+      }
+
+      .venue .oral-highlight {
+        color: #b4232c;
+      }
+
       .paper-links {
         display: flex;
         gap: 13px;
         margin: 0;
+        color: var(--publication-meta);
         font-size: 0.875rem;
         font-weight: 600;
       }
 
+      .egox-author-meta {
+        position: relative;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .egox-author-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        max-height: calc(100% + 14px);
+        overflow-y: auto;
+      }
+
+      .egox-author-meta .venue {
+        margin-bottom: 0;
+      }
+
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .egox-workshop {
+        display: none;
+      }
+
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .authors,
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .venue {
+        display: inline;
+        margin: 0;
+      }
+
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .venue::before {
+        content: "(";
+      }
+
+      .publication-highlight:has(.more-authors[aria-expanded="true"]) .venue::after {
+        content: ")";
+      }
+
+      .publication-highlight .paper-links {
+        margin-top: 8px;
+        line-height: 1.7;
+      }
+
       .paper-links a {
-        color: var(--text);
+        color: inherit;
       }
 
       .paper-links a:hover,
@@ -462,10 +606,6 @@
         gap: 0;
       }
 
-      .project-item:has(.project-details[open]) > div {
-        align-self: start;
-      }
-
       .project-details {
         display: flow-root;
         margin-top: 8px;
@@ -494,11 +634,24 @@
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        margin-top: 20px;
-        padding-top: 16px;
+        margin-top: 32px;
+        padding-top: 32px;
         border-top: 1px solid var(--line);
         color: var(--muted);
         font-size: 0.78rem;
+      }
+
+      .section-title,
+      .publication,
+      .project-item,
+      footer {
+        position: relative;
+      }
+
+      #publication-selected:checked ~ .publications .publication.selected:not(:has(~ .publication.selected)),
+      #publication-all:checked ~ .publications .publication:last-child,
+      .project-list > .project-item:last-child {
+        --item-divider-color: transparent;
       }
 
       .reveal-block {
@@ -512,17 +665,61 @@
         transform: translateY(0);
       }
 
+      @media (min-width: 641px) {
+        .publications > .publication:first-child > .publication-copy {
+          align-self: center;
+          max-height: 120px;
+          overflow-y: auto;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        .publication,
+        .project-item {
+          height: 180px;
+          grid-template-rows: minmax(0, 1fr);
+          padding-block: 29px 30px;
+        }
+
+        .publications > .publication:first-child {
+          height: 151px;
+          padding-top: 0;
+        }
+
+        .publication > video,
+        .project-item > img {
+          align-self: end;
+        }
+
+        .publication > .publication-copy,
+        .project-item > div {
+          min-height: 0;
+          max-height: 139px;
+          overflow-y: auto;
+        }
+
+        .publication::after,
+        .project-item::after {
+          top: auto;
+          bottom: -1px;
+        }
+      }
+
       @media (max-width: 640px) {
+        .publication-highlight::before {
+          display: none;
+        }
+
         body {
           font-size: 15px;
         }
 
         .page {
-          padding: 44px 20px;
+          padding: 28px 20px 44px;
         }
 
         .page-head {
-          margin-bottom: 16px;
+          margin-bottom: 0;
         }
 
         h1 {
@@ -542,16 +739,12 @@
 
         .profile-links {
           justify-content: center;
+          margin-left: 0;
         }
 
         .portrait {
-          width: 170px;
+          width: 180px;
           flex-basis: auto;
-        }
-
-        .highlights-grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
         }
 
         .publication,
@@ -572,6 +765,7 @@
         .publication video,
         .project-item img {
           width: 100%;
+          height: auto;
         }
 
         .education-list {
@@ -630,33 +824,22 @@
               <a href="https://en.xjtu.edu.cn/">XJTU</a>.
             </p>
             <nav class="profile-links" aria-label="Profile links">
-              <a href="mailto:shangtal@andrew.cmu.edu">Email</a>
-              <span aria-hidden="true">|</span>
-              <a href="https://scholar.google.com/citations?user=oX06uKIAAAAJ&amp;hl=en">Google Scholar</a>
-              <span aria-hidden="true">|</span>
-              <a href="https://x.com/ShangtaoLi">Twitter</a>
+              <a href="mailto:shangtal@andrew.cmu.edu" aria-label="Email" title="Email">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+              </a>
+              <a href="https://scholar.google.com/citations?user=oX06uKIAAAAJ&amp;hl=en" aria-label="Google Scholar" title="Google Scholar">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5Z"/></svg>
+              </a>
+              <a href="https://x.com/ShangtaoLi" aria-label="Twitter / X" title="Twitter / X">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/shangtao-li/" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+              </a>
             </nav>
           </div>
         </div>
       </header>
-
-      <section aria-labelledby="highlights-title">
-        <h2 id="highlights-title" class="section-title">Highlights</h2>
-        <div class="highlights-grid">
-          <figure class="highlight-item">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/highlight-poster.jpg?v=3" aria-label="EgoX cross-embodiment manipulation demonstration">
-              <source src="project/egox/highlight.mp4?v=3" type="video/mp4">
-            </video>
-            <figcaption><a href="https://egox-dream.github.io/">EgoX</a></figcaption>
-          </figure>
-          <figure class="highlight-item">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/lambda_reach/poster.jpg" aria-label="λ-Reachability humanoid safety demonstration">
-              <source src="project/lambda_reach/video.mp4" type="video/mp4">
-            </video>
-            <figcaption><a href="https://intelligent-control-lab.github.io/lambda_reach/">λ-Reachability</a></figcaption>
-          </figure>
-        </div>
-      </section>
 
       <section aria-labelledby="about-title">
         <h2 id="about-title" class="section-title">About</h2>
@@ -669,7 +852,7 @@
         </div>
       </section>
 
-      <section id="research" aria-labelledby="publication-title">
+      <section id="research" class="section-divider" aria-labelledby="publication-title">
         <h2 id="publication-title" class="section-title">
           Publication
           <span class="publication-note">* Equal contribution · † Equal advising</span>
@@ -682,20 +865,22 @@
           <label for="publication-all">All</label>
 
           <div class="publications">
-          <article class="publication selected">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/poster.jpg?v=3" aria-label="EgoX cross-embodiment manipulation demonstration">
-              <source src="project/egox/video.mp4" type="video/mp4">
+          <article class="publication selected publication-highlight">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/egox/publication-poster.jpg?v=3" aria-label="EgoX cross-embodiment manipulation demonstration">
+              <source src="project/egox/publication.mp4?v=3" type="video/mp4">
             </video>
             <div class="publication-copy">
               <h3>
                 <a href="https://egox-dream.github.io/">EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming</a>
               </h3>
+              <div class="egox-author-meta">
+              <div class="egox-author-content">
               <p class="authors">
                 Yaru Niu*,
                 Binghong Chen*,
                 Changwei Yao*,
                 <strong>Shangtao Li*</strong>,
-                Zhenlong Fang,
+                Zhenlong Fang<span id="egox-authors-collapsed">, and <button type="button" class="more-authors" aria-expanded="false" aria-controls="egox-authors-extra">17 more authors</button></span><span id="egox-authors-extra" tabindex="-1" hidden>,
                 Revanth Krishna Senthilkumaran,
                 Shuai Zhou,
                 Yuemin Mao,
@@ -709,12 +894,31 @@
                 Changliu Liu,
                 Jonathan Francis,
                 Ding Zhao
+                · <button type="button" class="fewer-authors" aria-controls="egox-authors-extra" aria-label="Collapse full author list">Show less</button></span>
               </p>
-              <p class="venue">Under review</p>
+              <p class="venue">Under review<span class="egox-workshop"> · <a href="https://scaling-h2r-corl.github.io/">CoRL <span class="venue-year">2026</span> Scaling H2R Workshop</a>, <strong class="oral-highlight">Oral</strong></span></p>
+              </div>
+              </div>
               <p class="paper-links">
                 <a href="https://egox-dream.github.io/">Project</a>
                 <a href="https://arxiv.org/pdf/2611.16728">PDF</a>
                 <a href="https://arxiv.org/abs/2611.16728">arXiv</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="publication">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/roboagentlab/poster.jpg?v=18" aria-label="Recording of the RoboAgentLab website with animated robot demonstrations">
+              <source src="project/roboagentlab/video.mp4?v=18" type="video/mp4">
+            </video>
+            <div class="publication-copy">
+              <h3>RoboAgentLab: A Taxonomy and Open Research Platform for Agentic Robotics Across Acting, Building, and Evolving</h3>
+              <p class="authors">RoboAgentLab Team</p>
+              <p class="venue">Under review</p>
+              <p class="paper-links">
+                <span>Project</span>
+                <span>PDF</span>
+                <span>arXiv</span>
               </p>
             </div>
           </article>
@@ -771,8 +975,8 @@
           </article>
 
           <article class="publication">
-            <video autoplay loop muted playsinline preload="metadata" poster="project/robofin3d/poster.jpg?v=1" aria-label="Robotic surface finishing scan-and-plan demonstration">
-              <source src="project/robofin3d/video.mp4?v=1" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="project/robofin3d/poster.jpg?v=4" aria-label="RoboFin3D real and simulated robotic sanding demonstration">
+              <source src="project/robofin3d/video.mp4?v=4" type="video/mp4">
             </video>
             <div class="publication-copy">
               <h3>
@@ -783,7 +987,7 @@
                 Jiaoyang Li,
                 Changliu Liu
               </p>
-              <p class="venue"><strong>IROS 2026</strong> S2RCC Workshop</p>
+              <p class="venue"><strong>IROS <span class="venue-year">2026</span></strong> S2RCC Workshop</p>
               <p class="paper-links">
                 <a href="https://icontrol.ri.cmu.edu/research/polishing.html">Project</a>
                 <a href="https://arxiv.org/pdf/2609.37560">PDF</a>
@@ -807,7 +1011,7 @@
                 Xusheng Luo†,
                 Changliu Liu†
               </p>
-              <p class="venue"><strong>CoRL 2026</strong></p>
+              <p class="venue"><strong>CoRL <span class="venue-year">2026</span></strong></p>
               <p class="paper-links">
                 <a href="https://pyywill.github.io/restruct-corl2026/">Project</a>
                 <a href="https://arxiv.org/pdf/2606.26588v1">PDF</a>
@@ -830,7 +1034,7 @@
                 Yifan Sun,
                 Changliu Liu
               </p>
-              <p class="venue"><strong>CoRL 2026</strong></p>
+              <p class="venue"><strong>CoRL <span class="venue-year">2026</span></strong></p>
               <p class="paper-links">
                 <a href="https://intelligent-control-lab.github.io/lambda_reach/">Project</a>
                 <a href="https://arxiv.org/pdf/2606.16022v1">PDF</a>
@@ -855,7 +1059,7 @@
                 Tao Cui, Lingyun Wang,
                 Changliu Liu
               </p>
-              <p class="venue"><strong>IROS 2026</strong></p>
+              <p class="venue"><strong>IROS <span class="venue-year">2026</span></strong></p>
               <p class="paper-links">
                 <a href="https://intelligent-control-lab.github.io/humanoid_stoppability/">Project</a>
                 <a href="https://arxiv.org/pdf/2603.22703">PDF</a>
@@ -867,7 +1071,7 @@
         </div>
       </section>
 
-      <section aria-labelledby="projects-title">
+      <section class="section-divider" aria-labelledby="projects-title">
         <h2 id="projects-title" class="section-title">Selected Projects</h2>
         <div class="project-list">
           <article class="project-item">
@@ -903,7 +1107,7 @@
         </div>
       </section>
 
-      <section aria-labelledby="education-title">
+      <section class="section-divider" aria-labelledby="education-title">
         <h2 id="education-title" class="section-title">Education</h2>
         <div class="education-list">
           <article class="education-item">
@@ -937,18 +1141,86 @@
       </section>
 
       <footer>
-        <span>© 2026 Shangtao Li · Site inspired by <a href="https://yanjieze.com/">Yanjie Ze</a>.</span>
+        <span>© 2026 Shangtao Li · Site inspired by <a href="https://yanjieze.com/">Yanjie Ze</a> and <a href="https://pyywill.github.io/">Yiyuan Pan</a>.</span>
       </footer>
     </main>
 
     <script>
       (() => {
+        const toggle = document.querySelector(".more-authors");
+        const extra = document.getElementById("egox-authors-extra");
+        const collapsed = document.getElementById("egox-authors-collapsed");
+        toggle.addEventListener("click", () => {
+          extra.hidden = false;
+          toggle.setAttribute("aria-expanded", "true");
+          collapsed.hidden = true;
+          extra.focus({ preventScroll: true });
+        });
+        document.querySelector(".fewer-authors").addEventListener("click", () => {
+          extra.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          collapsed.hidden = false;
+          toggle.focus({ preventScroll: true });
+        });
+      })();
+
+
+      (() => {
         const projects = document.querySelectorAll(".project-item");
         const mobile = window.matchMedia("(max-width: 640px)");
-        const reserveProjectSpace = () => {
+        const fixedRows = window.matchMedia("(min-width: 1000px)");
+        const layoutBottom = (element) => {
+          let bottom = element.offsetHeight;
+          for (let node = element; node; node = node.offsetParent) bottom += node.offsetTop;
+          return bottom;
+        };
+        const alignSectionDividers = () => {
+          document.querySelectorAll(".publication, .project-item").forEach((item) => {
+            if (fixedRows.matches) {
+              item.style.removeProperty("--media-divider-top");
+              return;
+            }
+            if (!item.offsetHeight) return;
+            const media = item.querySelector("video, img");
+            const copy = item.querySelector(":scope > div");
+            // Keep long text clear of the media-anchored divider on narrow screens.
+            const top = mobile.matches ? item.offsetHeight - 1 : Math.max(
+              media.offsetTop + media.getBoundingClientRect().height + 30,
+              copy.offsetTop + copy.getBoundingClientRect().height + 6
+            );
+            item.style.setProperty("--media-divider-top", `${top}px`);
+          });
+          document.querySelectorAll(".section-divider, footer").forEach((section) => {
+            const previous = section.previousElementSibling;
+            const content = [...previous.querySelectorAll(
+              ".about-copy p, .publication > video, .project-item > img, .education-item img, .education-item h3, .education-item p, .education-item time" +
+              (mobile.matches ? ", .publication-copy, .project-item > div" : "")
+            )].filter((element) => element.offsetHeight > 0);
+            if (!content.length) return;
+            // Compensate for trailing row padding without changing internal dividers.
+            const trailingSpace = layoutBottom(previous) - Math.max(...content.map(layoutBottom));
+            section.style.marginTop = `${32 - trailingSpace}px`;
+          });
+        };
+        const reserveDetailSpace = () => {
+          const meta = document.querySelector(".egox-author-meta");
+          const toggle = meta.querySelector(".more-authors");
+          const extra = document.getElementById("egox-authors-extra");
+          const collapsed = document.getElementById("egox-authors-collapsed");
+          const wasExpanded = !extra.hidden;
+          meta.style.height = "";
+          extra.hidden = true;
+          collapsed.hidden = false;
+          toggle.setAttribute("aria-expanded", "false");
+          const collapsedHeight = meta.getBoundingClientRect().height;
+          extra.hidden = !wasExpanded;
+          collapsed.hidden = wasExpanded;
+          toggle.setAttribute("aria-expanded", String(wasExpanded));
+          meta.style.height = `${collapsedHeight}px`;
+
           projects.forEach((project) => {
             project.style.minHeight = "";
-            if (mobile.matches) return;
+            if (mobile.matches || fixedRows.matches) return;
 
             const details = project.querySelector("details");
             const wasOpen = details.open;
@@ -958,14 +1230,19 @@
             details.open = wasOpen;
             project.style.minHeight = `${height}px`;
           });
+          alignSectionDividers();
         };
 
-        reserveProjectSpace();
-        document.fonts.ready.then(reserveProjectSpace);
+        document.querySelector(".publication-filter").addEventListener("change", alignSectionDividers);
+        projects.forEach((project) => {
+          project.querySelector("details").addEventListener("toggle", alignSectionDividers);
+        });
+        reserveDetailSpace();
+        document.fonts.ready.then(reserveDetailSpace);
         let resizeFrame;
         window.addEventListener("resize", () => {
           cancelAnimationFrame(resizeFrame);
-          resizeFrame = requestAnimationFrame(reserveProjectSpace);
+          resizeFrame = requestAnimationFrame(reserveDetailSpace);
         });
       })();
 
@@ -973,7 +1250,7 @@
         if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
         const blocks = document.querySelectorAll(
-          "main > section > .section-title, .highlights-grid, .about-copy, .publication-filter > label, .publication, .project-item, .education-item, footer"
+          "main > section > .section-title, .about-copy, .publication-filter > label, .publication, .project-item, .education-item, footer"
         );
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
